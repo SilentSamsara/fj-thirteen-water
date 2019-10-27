@@ -90,7 +90,7 @@ public class URLDemo
 		 json.put("password", password);
 		 json.put("student_number", student_number);
 		 json.put("student_password",student_password );
-		 JSONObject token=JSONObject.parseObject(Demo.sendPost("http://api.revth.com/auth/register2", json,1));
+		 JSONObject token=JSONObject.parseObject(URLDemo.sendPost("http://api.revth.com/auth/register2", json,1));
 		int mark=(JSONObject.parseObject(token.toString())).getIntValue("status");
 		if(mark==0)
 			return true;
@@ -103,12 +103,12 @@ public class URLDemo
 		MyName=username;
 		json.put("username", username);
 		json.put("password", password);
-		JSONObject token=JSONObject.parseObject(Demo.sendPost("http://api.revth.com/auth/login", json,1));//登录
+		JSONObject token=JSONObject.parseObject(URLDemo.sendPost("http://api.revth.com/auth/login", json,1));//登录
 		try {
 			String Token2=(JSONObject.parseObject(token.get("data").toString())).getString("token");
 			int id2=(JSONObject.parseObject(token.get("data").toString())).getIntValue("user_id");
-			Demo.id=id2;
-			Demo.Token=Token2;
+			URLDemo.id=id2;
+			URLDemo.Token=Token2;
 		}catch (Exception e) {
 			return true;
 		}
@@ -116,11 +116,11 @@ public class URLDemo
 		return false;
 	 }
 	 public static void logout(URLDemo Demo) {//注销
-		 Demo.sendPost("http://api.revth.com/auth/logout", null, 0);
+		 URLDemo.sendPost("http://api.revth.com/auth/logout", null, 0);
 	 }
 	 public static String rank(URLDemo Demo) {
 		 /*获取排行榜*/
-			String back=Demo.sendGet("http://api.revth.com/rank",0);
+			String back=URLDemo.sendGet("http://api.revth.com/rank",0);
 			JSONArray pai=JSON.parseArray(back);
 			back=new String();
 			TotalLocation=pai.size();
@@ -142,8 +142,9 @@ public class URLDemo
 	 }
 	 public static String history(URLDemo Demo,String play_id,int page) {
 		 /*历史战局*/
-			String back=Demo.sendGet("http://api.revth.com/history?player_id="+play_id+"&limit=500&page="+page,2);
-			JSONArray pai=JSONArray.parseArray((new JSONObject().parseObject(back)).getString("data").toString());
+			String back=URLDemo.sendGet("http://api.revth.com/history?player_id="+play_id+"&limit=500&page="+page,2);
+			JSONObject jsonObject = new JSONObject().parseObject(back);
+			JSONArray pai=JSONArray.parseArray(jsonObject.getString("data").toString());
 			back=new String();
 			for(int i=0;i<pai.size();i++)
 			{
@@ -152,7 +153,7 @@ public class URLDemo
 			return back;
 	 }
 	 public static String  historyid(URLDemo Demo,String id) {
-		 	String back=Demo.sendGet("http://api.revth.com/history/"+id,2);
+		 	String back=URLDemo.sendGet("http://api.revth.com/history/"+id,2);
 			JSONArray pai=JSONArray.parseArray(new JSONObject().parseObject((new JSONObject().parseObject(back)).getString("data")).getString("detail").toString());
 			back=new String();
 			for(int i=0;i<pai.size();i++)

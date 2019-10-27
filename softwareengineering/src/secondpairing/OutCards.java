@@ -1,6 +1,4 @@
 package secondpairing;
-import java.lang.reflect.Array;
-import java.time.chrono.MinguoDate;
 /*存储牌型*/
 import java.util.ArrayList;
 
@@ -32,15 +30,12 @@ public class OutCards {
 		SortCards.SortByNum(Front);
 		marks.AllDone(last);
 		lastWeight=marks.Weight();
-		//marks.displayAll();
 		marks.init();
 		marks.AllDone(Middle);
 		MiddleWeight=marks.Weight();
-		//marks.displayAll();
 		marks.init();
 		marks.AllDone(Front);
 		FrontWeight=marks.Weight();
-		//marks.displayAll();
 		marks.init();
 		Weight=lastWeight+MiddleWeight+FrontWeight;//三墩权值相加
 		if(FrontWeight>MiddleWeight)

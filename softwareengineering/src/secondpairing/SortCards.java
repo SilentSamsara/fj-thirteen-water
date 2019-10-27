@@ -1,17 +1,9 @@
 package secondpairing;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import javax.naming.LimitExceededException;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-
-import testGUI.view;
 /*排序算法*/
 public class SortCards {
 	public static void SortByType(ArrayList<Cards> list) {
@@ -98,7 +90,7 @@ public class SortCards {
 	public static void work() {
 		long starTime=System.currentTimeMillis();
 		int id;
-		JSONObject GetCards=JSONObject.parseObject(Demo.sendPost("http://api.revth.com/game/open", null,0));//开局
+		JSONObject GetCards=JSONObject.parseObject(URLDemo.sendPost("http://api.revth.com/game/open", null,0));//开局
 		id=(JSONObject.parseObject(GetCards.get("data").toString())).getIntValue("id");
 		String cards=null;
 		cards=(JSONObject.parseObject(GetCards.get("data").toString())).getString("card");
@@ -115,7 +107,7 @@ public class SortCards {
 		ArrayList<String> resualtCards=result.display();
 		sendCard.put("id", id);
 		sendCard.put("card", resualtCards);
-		Demo.sendPost("http://api.revth.com/game/submit", sendCard, 1);
+		URLDemo.sendPost("http://api.revth.com/game/submit", sendCard, 1);
 		System.out.println(sendCard.toString());
 //		view.post_textField.setText(resualtCards.toString());
 //		view.post_textField.paintImmediately(view.post_textField.getBounds());
@@ -124,7 +116,7 @@ public class SortCards {
 		long Time=endTime-starTime;//所需时间为结束时间-开始时间
 		System.out.println("耗时："+Time+"毫秒");
 	}
-	public static void main(String arge[]) {
+	/*public static void main(String arge[]) {
 		/*JSONObject json=new JSONObject();
 		Demo.Token="db687336-a35a-4d81-b1a1-ae119b3bc17a";
 		for(int i=0;i<50;i++)
@@ -134,7 +126,7 @@ public class SortCards {
 		}
 		Demo.history(Demo, ""+39, 0);*/
 		
-		list =CardsList.GetCards("$2 $A *K *5 *7 $7 *10 $4 #6 *6 &7 #7 &5");
+		/*list =CardsList.GetCards("$2 $A *K *5 *7 $7 *10 $4 #6 *6 &7 #7 &5");
 		ArrayList<Integer> xr=new ArrayList<Integer>();
 		for(int i=0;i<=12;i++)
 			xr.add(new Integer(i));
@@ -154,7 +146,7 @@ public class SortCards {
 		//marks.displayAll();
 		
 		
-	}
+	}*/
 	/*
 	 * "$2 $A *K *5 *7 $7 *10 $4 #6 *6 &7 #7 &5"
 	 * 

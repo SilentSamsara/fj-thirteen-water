@@ -663,7 +663,7 @@ public class view extends JFrame  {
         	public void focusLost(FocusEvent e) {
         		String zhanju_id=history_id.getText();
 				//zhanju_id是接口的输入  
-				textArea_xq.setText(Demo.historyid(Demo, zhanju_id));
+				textArea_xq.setText(URLDemo.historyid(Demo, zhanju_id));
         	}
 		});
         
@@ -689,8 +689,8 @@ public class view extends JFrame  {
         	
 			public void actionPerformed(ActionEvent e) {
 				//Demo.history(Demo);
-				String player=""+Demo.id;
-				history_textArea.setText(Demo.history(Demo,player,0));
+				String player=""+URLDemo.id;
+				history_textArea.setText(URLDemo.history(Demo,player,0));
 				history.setVisible(true);
 				button1.setVisible(false);
 				button2.setVisible(false);
@@ -714,7 +714,7 @@ public class view extends JFrame  {
         bph.addActionListener(new ActionListener() {
 	
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText(Demo.rank(Demo));
+				textArea.setText(URLDemo.rank(Demo));
 				paihang.setVisible(true);
 				bhistory.setVisible(false);
 				button1.setVisible(false);

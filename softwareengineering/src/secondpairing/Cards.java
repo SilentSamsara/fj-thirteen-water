@@ -32,7 +32,6 @@ public class Cards {
 	}
 	public String toString() {
 		int z=num;
-		String x;
 		char y=(char)(z+'0');
 		if(y>='2'&&y<='9')
 			z=y;
