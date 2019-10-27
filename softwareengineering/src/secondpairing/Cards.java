@@ -3,13 +3,13 @@ package secondpairing;
 public class Cards {
 	public String type;
 	public int num;
-	public int ChangeToInt (String x) {
+	public int ChangeToInt (String recieve) {
 		int z=-1;
-		if(x.length()==2)
+		if(recieve.length()==2)
 			z=10;
 		else
 		{
-			char y=x.charAt(0);
+			char y=recieve.charAt(0);
 			if(y>='2'&&y<='9')
 				z=y-'0';
 			else {
@@ -25,10 +25,10 @@ public class Cards {
 		}
 		return z;
 	}
-	public Cards(String x) {
-		type=x.substring(0,1);
-		x=x.replaceFirst("\\"+type, "");
-		num=ChangeToInt(x);
+	public Cards(String recieve) {
+		type=recieve.substring(0,1);
+		recieve=recieve.replaceFirst("\\"+type, "");
+		num=ChangeToInt(recieve);
 	}
 	public String toString() {
 		int z=num;

@@ -1,7 +1,6 @@
 package testGUI;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,11 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.security.Provider.Service;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -33,19 +27,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-
-import org.apache.http.impl.cookie.BasicPathHandler;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI.NormalColor;
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 
-import com.alibaba.fastjson.JSONObject;
-
-import secondpairing.Cards;
-import secondpairing.CardsList;
-import secondpairing.OutCards;
 import secondpairing.SortCards;
 import secondpairing.URLDemo;
 
@@ -204,6 +189,7 @@ public class view extends JFrame  {
 				loginbutton.setBounds(24, 131, 267, 39);
 				
 				loginbutton.addActionListener(new ActionListener() {		
+					@SuppressWarnings("deprecation")
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						User user1=new User();
@@ -213,7 +199,7 @@ public class view extends JFrame  {
 						Userdao ud =new Userdaoimpl();
 						ud.login(user1);
 						// TODO 自动生成的 catch 块
-						if(Demo.login(Demo, user1.getUsername(), user1.getPassword()))
+						if(URLDemo.login(Demo, user1.getUsername(), user1.getPassword()))
 						{
 							JOptionPane.showMessageDialog(null, "用户名或密码错误", "登录失败", JOptionPane.ERROR_MESSAGE);
 							textField.setText("");
@@ -285,6 +271,7 @@ public class view extends JFrame  {
 				textField.setColumns(10);
 				rpasswordField_1.addFocusListener(new FocusListener() {
 					
+					@SuppressWarnings("deprecation")
 					@Override
 					public void focusLost(FocusEvent e) {
 						if(rpasswordField.getText().equals(rpasswordField_1.getText())) {
@@ -323,6 +310,7 @@ public class view extends JFrame  {
 				registbutton.setBounds(48, 208, 242, 39);
 				registbutton.addActionListener(new ActionListener() {
 					
+					@SuppressWarnings("deprecation")
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						User user2=new User();
@@ -336,10 +324,10 @@ public class view extends JFrame  {
 						
 						
 						ud2.regist(user2);
-						if(Demo.register(Demo, user2.getUsername(), user2.getPassword(), user2.getStudent_number(), user2.getStudent_password()))
+						if(URLDemo.register(Demo, user2.getUsername(), user2.getPassword(), user2.getStudent_number(), user2.getStudent_password()))
 						{
 							JOptionPane.showMessageDialog(new JFrame().getContentPane(),"注册成功，将使用此账号登录..."); 
-							Demo.login(Demo, user2.getUsername(), user2.getPassword());						
+							URLDemo.login(Demo, user2.getUsername(), user2.getPassword());						
 							cl.next(jpc);
 						}
 						else
