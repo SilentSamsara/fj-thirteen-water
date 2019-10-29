@@ -92,18 +92,17 @@ public class SelectCards {
 			if(cards.get(i).num==cards.get(i+1).num) {
 				Pair=Pair+10;
 				pair[i]=cards.get(i).num;
-				if(i<(cards.size()-2)) {
-					if(cards.get(i+1).num==cards.get(i+2).num){
-						ThreeSameCards=30;
-						Three[i]=cards.get(i+2).num;
-						j=i;
-						if (i<(cards.size()-3)) {
-							if(cards.get(i+2).num==cards.get(i+3).num)
-								FourSameCards=70;
-						Four[i]=cards.get(i+3).num;
-						k=i;
-						}
+				if((i<(cards.size()-2))&&(cards.get(i+1).num==cards.get(i+2).num)) {
+					ThreeSameCards=30;
+					Three[i]=cards.get(i+2).num;
+					j=i;
+					if (i<(cards.size()-3)) {
+						if(cards.get(i+2).num==cards.get(i+3).num)
+							FourSameCards=70;
+					Four[i]=cards.get(i+3).num;
+					k=i;
 					}
+					
 				}
 			}
 		}/*权值需要改进*/

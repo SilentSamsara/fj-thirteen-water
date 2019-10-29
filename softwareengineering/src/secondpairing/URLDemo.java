@@ -79,8 +79,7 @@ public class URLDemo
 		    System.out.println(result);
 		} catch (Exception e) {
 		    System.out.println("请求异常");
-		        throw new RuntimeException(e);
-		    }
+		}
 		    return result;
 		}
 	 public static boolean register(URLDemo Demo,String username,String password,String student_number,String student_password) {
@@ -95,7 +94,7 @@ public class URLDemo
 		if(mark==0)
 			return true;
 		else
-		 return false;
+			return false;
 	 }
 	 public static boolean login(URLDemo Demo,String username,String password) {
 		/*登录*/
@@ -155,7 +154,7 @@ public class URLDemo
 	 public static String  historyid(URLDemo Demo,String id) {
 		 	String back=URLDemo.sendGet("http://api.revth.com/history/"+id,2);
 			JSONArray pai=JSONArray.parseArray(new JSONObject().parseObject((new JSONObject().parseObject(back)).getString("data")).getString("detail").toString());
-			back=new String();
+			back="";
 			for(int i=0;i<pai.size();i++)
 			{
 				back=back+"玩家:"+pai.getJSONObject(i).getString("name")+"\n本局分数:"+pai.getJSONObject(i).getIntValue("score")+"\n出牌:"+pai.getJSONObject(i).getString("card")+"\n\n";
