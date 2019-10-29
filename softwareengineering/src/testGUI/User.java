@@ -1,8 +1,5 @@
 package testGUI;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
-
 public class User {
 	private String rjset;
 	private String username;
