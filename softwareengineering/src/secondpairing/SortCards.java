@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import com.alibaba.fastjson.JSONObject;
+
+import testGUI.view;
 /*排序算法*/
 public class SortCards {
 	public static void SortByType(ArrayList<Cards> list) {
@@ -94,8 +96,8 @@ public class SortCards {
 		id=(JSONObject.parseObject(GetCards.get("data").toString())).getIntValue("id");
 		String cards=null;
 		cards=(JSONObject.parseObject(GetCards.get("data").toString())).getString("card");
-//		view.receive_textField.setText(cards);
-//		view.receive_textField.paintImmediately(view.receive_textField.getBounds());
+		view.receive_textField.setText(cards);
+		view.receive_textField.paintImmediately(view.receive_textField.getBounds());
 		list =CardsList.GetCards(cards);
 		ArrayList<Integer> xr=new ArrayList<Integer>();
 		for(int i=0;i<=12;i++)
@@ -109,14 +111,14 @@ public class SortCards {
 		sendCard.put("card", resualtCards);
 		URLDemo.sendPost("http://api.revth.com/game/submit", sendCard, 1);
 		System.out.println(sendCard.toString());
-//		view.post_textField.setText(resualtCards.toString());
-//		view.post_textField.paintImmediately(view.post_textField.getBounds());
+		view.post_textField.setText(resualtCards.toString());
+		view.post_textField.paintImmediately(view.post_textField.getBounds());
 		result=new OutCards();
 		long endTime=System.currentTimeMillis();//定义一个结束时间
 		long Time=endTime-starTime;//所需时间为结束时间-开始时间
 		System.out.println("耗时："+Time+"毫秒");
 	}
-	/*public static void main(String arge[]) {
+	//public static void main(String arge[]) {
 		/*JSONObject json=new JSONObject();
 		Demo.Token="db687336-a35a-4d81-b1a1-ae119b3bc17a";
 		for(int i=0;i<50;i++)

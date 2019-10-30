@@ -274,8 +274,7 @@ public class view extends JFrame  {
 					@SuppressWarnings("deprecation")
 					@Override
 					public void focusLost(FocusEvent e) {
-						if((rpasswordField.getText().equals(rpasswordField_1.getText()))==false) {
-						
+						if(!rpasswordField.getText().equals(rpasswordField_1.getText())) {
 							JOptionPane.showMessageDialog(null, "两次输入密码不一致", "注册失败", JOptionPane.ERROR_MESSAGE);
 							rpasswordField_1.setText("");
 						}
